@@ -34,7 +34,7 @@
     <dependency>
         <groupId>org.xerial</groupId>
         <artifactId>sqlite-jdbc</artifactId>
-      <version>3.32.3.1</version>
+        <version>3.32.3.1</version>
     </dependency>
   </dependencies>
 
@@ -91,36 +91,25 @@
           <version>3.0.0</version>
         </plugin>
 	<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-shade-plugin</artifactId>
-			<executions>
-				<execution>
-					<phase>package</phase>
-					<goals>
-						<goal>shade</goal>
-					</goals>
-					<configuration>
-						<transformers>
-							<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                <mainClass>com.company.Server</mainClass>
-                            </transformer>
-							<transformer
-								implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-								<resource>META-INF/spring.handlers</resource>
-							</transformer>
-							<transformer
-								implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-								<resource>META-INF/spring.schemas</resource>
-							</transformer>
-							<transformer
-								implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-								<resource>META-INF/services/java.sql.Driver</resource>
-							</transformer>
-						</transformers>
-					</configuration>
-				</execution>
-			</executions>
-		</plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.4</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <transformers>
+                  <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                    <resource>META-INF/services/java.sql.Driver</resource>
+                  </transformer>
+                </transformers>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
