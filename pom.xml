@@ -90,6 +90,10 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <transformer
+	        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+	        <resource>META-INF/services/java.sql.Driver</resource>
+        </transformer>
       </plugins>
     </pluginManagement>
   </build>
